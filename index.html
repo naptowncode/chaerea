@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chaerea - A Principled Passphrase Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <header>
+      <h1>🔐 Chaerea - A Principled Passphrase Generator 🔐</h1>
+      <p><i>Don't mess around with your passwords or <a href="#cassius-chaerea">Cassius
+            Chaerea</a> will get you</i></p>
+    </header>
+
+    <!-- Output -->
+    <div class="card">
+      <h2>Your Passphrase</h2>
+      <div class="output-area">
+        <div id="passphrase-output" class="placeholder">Click "Generate" to create a passphrase</div>
+        <button class="btn btn-secondary" id="copy-btn" disabled>Copy</button>
+      </div>
+      <div class="note">Passphrase length: <span id="passphrase-current-length" class="note-value"></span> characters
+        (minimum <span id="passphrase-min-length" class="note-value"></span>, maximum <span id="passphrase-max-length"
+          class="note-value"></span>)</div>
+      <div class="note">Passphrase strength: ≥ <span id="passphrase-strength" class="note-value"></span> bits (<span
+          id="passphrase-count" class="note-value"></span> possible combinations)</div>
+      <button class="btn btn-primary" id="generate-btn">Generate Another Passphrase</button>
+    </div>
+
+    <!-- Controls -->
+    <div class="card">
+      <div class="wordlist-header" id="controls-header">
+        <h2>Settings</h2>
+        <button class="wordlist-toggle" id="controls-toggle">Show ▾</button>
+      </div>
+      <div class="controls-body collapsed" id="controls-body">
+        <div class="controls">
+          <div class="control-group">
+            <label for="word-count">Number of words</label>
+            <input type="number" id="word-count" min="3" max="8" value="4" />
+          </div>
+          <div class="control-group">
+            <label for="separator">Separator</label>
+            <input type="text" id="separator" value="-" maxlength="4" />
+          </div>
+          <div class="control-group">
+            <label for="include-number">Include number</label>
+            <select id="include-number">
+              <option value="end" selected>At the end</option>
+              <option value="anywhere">Anywhere</option>
+              <option value="none">Don't include number</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="garble-max">Garbled words, maximum</label>
+            <input type="number" id="garble-max" min="0" max="4" value="0" />
+          </div>
+          <div class="control-group control-group-full">
+            <label for="builtin-list">Word list</label>
+            <select id="builtin-list">
+              <option value="shortlist" selected>Short list (3,422 words)</option>
+              <option value="longlist">Long list (11,746 words)</option>
+              <option value="3letter">3-letter words (433 words)</option>
+              <option value="custom">Custom (paste or upload)</option>
+            </select>
+          </div>
+          <div class="control-group control-group-full">
+            <textarea id="word-textarea" spellcheck="false" placeholder="One word per line…"></textarea>
+            <div class="wordlist-actions">
+              <label class="btn btn-secondary" for="file-input">Upload .txt</label>
+              <input type="file" id="file-input" accept=".txt,.csv" hidden />
+              <button class="btn btn-secondary" id="reset-btn">Reset to Default</button>
+              <span id="word-count-info"></span>
+            </div>
+          </div>
+        </div>
+        <div id="validation-msg"></div>
+      </div>
+    </div>
+
+    <!-- Documentation -->
+    <div class="card" id="documentation">
+      <h2>What's All This, Then?</h2>
+      <p>Chaerea (KAI-ray-uh) is a passphrase generator that follows these principles:</p>
+      <ol>
+        <li>People will use the password that works for them. Obviously.</li>
+        <li>People remember words and phrases more easily than letters, numbers, and symbols. (see <a href="https://xkcd.com/936/">xkcd 936 - correct horse battery staple</a>)</li>
+        <li>People have a hard time choosing things "randomly". (see <a href="https://www.loper-os.org/bad-at-entropy/manmach.html">Bad at Entropy</a>)</li>
+      </ol>
+      <p>People easily remember thousands of words in daily life, and a phrase of just four words can have millions upon millions of possible combinations. Let people choose the settings that meet their password needs and let computers do the hard part of picking a truly random combination.</p>
+    </div>
+
+    <div class="card" id="documentation-2">
+      <h2>The Settings</h2>
+      <p>Default settings are meant to balance security with memorability.</p>
+      <ul>
+        <li><strong>Number of words</strong>: Default is 4, minimum 3, maximum 8. Longer is more secure but more likely to exceed a system's maximum password length.</li>
+        <li><strong>Separator</strong>: Default is "-", but can be any string up to 4 characters long.</li>
+        <li><strong>Include number</strong>: Default is "At the end". Satisfies password systems that require a number.</li>
+        <li><strong>Word list</strong>: Default is "Short list".
+          <ul>
+            <li><strong>Short list</strong>: 3,422 core English words, from three to eight letters long, with possibly objectionable words removed. Based on the <a href="https://wordlist.aspell.net/12dicts-readme/">12dicts</a> "3esl" list of words common to at least three ESL dictionaries.</li>
+            <li><strong>Long list</strong>: 11,746 English words, like the Short list but based on the 12dicts "6of12" list of words common to at least six general dictionaries.</li>
+            <li><strong>3-letter list</strong>: 433 English words, all exactly three letters long, taken from the Short list.</li>
+            <li><strong>Custom</strong>: Paste or upload your own word list. One word per line, no duplicates.</li>
+          </ul>
+        </li>
+        <li><strong>Garbled words</strong>: Not recommended, because nonsense words are harder to remember than real words. But nonsense words aren't in any dictionaries (probably) and they can help pad the word list to increase strength a bit. The garbled words are generated automatically from the base words using phonetic substitutions.</li>
+      </ul>
+    </div>
+
+    <!-- Cassius Chaerea -->
+    <div class="card" id="cassius-chaerea">
+      <h2>Cassius Who??</h2>
+      <p>In ancient Rome, <a href="https://en.wikipedia.org/wiki/Cassius_Chaerea">Cassius Chaerea</a> was a prefect of
+        the Praetorian Guard. He was widely acknowledged as a brave and principled soldier and then, in the year 41, he
+        assassinated the emperor Caligula. He did this mostly because Caligula was a dangerously insane tyrant, but also
+        because Caligula liked to taunt and humiliate him by making him use embarrassing watch-words when he was on
+        palace guard duty. The lesson of history is clear:</p>
+      <p>Don't mess around with your passwords or Cassius Chaerea will get you.</p>
+    </div>
+
+    <a href="https://github.com/naptowncode/chaerea">Chaerea on GitHub</a>
+
+  </div>
+
+  <script src="words-shortlist.js"></script>
+  <script src="words-longlist.js"></script>
+  <script src="words-3letter.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

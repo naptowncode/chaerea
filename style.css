@@ -1,0 +1,363 @@
+/* ── Reset & Base ─────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #f5f5f7;
+  --surface: #ffffff;
+  --text: #1d1d1f;
+  --text-muted: #6e6e73;
+  --accent: #0071e3;
+  --accent-hover: #0059b3;
+  --border: #d2d2d7;
+  --radius: 12px;
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  --mono: "SF Mono", "Fira Code", "Cascadia Code", "Consolas", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c1c1e;
+    --surface: #2c2c2e;
+    --text: #f5f5f7;
+    --text-muted: #98989d;
+    --accent: #0a84ff;
+    --accent-hover: #409cff;
+    --border: #48484a;
+    --shadow: 0 2px 12px rgba(0, 0, 0, 0.32);
+  }
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  transition: color 0.15s;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+a:visited {
+  color: var(--accent-hover);
+}
+
+/* ── Lists ───────────────────────────────────────────── */
+ol,
+ul {
+  margin-left: 1.5rem;
+  padding-left: 1rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* ── Paragraphs ──────────────────────────────────────── */
+p {
+  margin-bottom: 1rem;
+}
+
+/* ── Layout ──────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 640px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+header p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+}
+
+/* ── Card ────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.card h2 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+/* ── Controls ────────────────────────────────────────── */
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.control-group label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.control-group input[type="number"],
+.control-group input[type="text"] {
+  font-family: var(--font);
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+/* checkbox inside label should be spaced from text */
+.control-group label input[type="checkbox"] {
+  margin-right: 0.35rem;
+  vertical-align: middle;
+}
+
+.control-group input:focus {
+  border-color: var(--accent);
+}
+
+.control-group select {
+  font-family: var(--font);
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+  cursor: pointer;
+}
+
+.control-group select:focus {
+  border-color: var(--accent);
+}
+
+.control-group-full {
+  grid-column: 1 / -1;
+}
+
+/* ── Buttons ─────────────────────────────────────────── */
+.btn {
+  font-family: var(--font);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0.6rem 1.25rem;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn-secondary {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+  padding: 0.45rem 0.9rem;
+}
+
+.btn-secondary:hover {
+  background: var(--border);
+}
+
+/* ── Output ──────────────────────────────────────────── */
+.output-area {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3.5rem;
+}
+
+#passphrase-output {
+  flex: 1;
+  font-family: var(--mono);
+  font-size: 1.35rem;
+  font-weight: 600;
+  word-break: break-all;
+  line-height: 1.4;
+  color: var(--text);
+  padding: 0.5rem 0;
+  user-select: all;
+}
+
+#passphrase-output.placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+  font-size: 1rem;
+  font-family: var(--font);
+}
+
+#copy-btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.copy-feedback {
+  color: #34c759;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* ── Validation ──────────────────────────────────────── */
+#validation-msg {
+  color: #ff453a;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  min-height: 1.25rem;
+}
+
+/* subtle note text used for passphrase count */
+.note {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+/* ── Word List Section ───────────────────────────────── */
+.wordlist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+}
+
+.wordlist-header h2 {
+  margin-bottom: 0;
+}
+
+.wordlist-toggle {
+  font-size: 0.8rem;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-family: var(--font);
+}
+
+/* controls panel can also be collapsed */
+.controls-body {
+  display: block;
+  margin-top: 1rem;
+}
+
+.controls-body.collapsed {
+  display: none;
+}
+#word-textarea {
+  width: 100%;
+  min-height: 160px;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  resize: vertical;
+  outline: none;
+  line-height: 1.5;
+}
+
+#word-textarea:focus {
+  border-color: var(--accent);
+}
+
+.wordlist-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+#word-count-info {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 480px) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  #passphrase-output {
+    font-size: 1.1rem;
+  }
+
+  .output-area {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #copy-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
