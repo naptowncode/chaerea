@@ -33,10 +33,10 @@ Default settings are meant to balance security with memorability.
   Default is "At the end". Satisfies password systems that require a number.
 
 * **Word lists**  
-  Default is "Short list".
-  * *Short list* - 3,422 core English words, from three to eight letters long, with possibly objectionable words removed. Based on the <a href="https://wordlist.aspell.net/12dicts-readme/">12dicts</a> "3esl" list of words common to at least three ESL dictionaries.
-  * *Long list* - 11,746 English words, like the Short list but based on the 12dicts "6of12" list of words common to at least six general dictionaries.  
-  * *3‑letter list* - 433 English words, all exactly three letters long, taken from the Short list.
+  Default is "Short list". Lists are based on the [12dicts](https://wordlist.aspell.net/12dicts-readme/) project that makes lists of common English words by comparing multiple dictionaries. All lists have been filtered to remove a variety of words that could be problematic for one reason or another. 
+  * *Short list* - 11,912 core English words, from three to eight letters long, based 12dicts "3esl" list.
+  * *Long list* - 16,194 English words, from three to eight letters long, based 12dicts "6of12" list.
+  * *3‑letter list* - 446 English words, all exactly three letters long, taken from the Short list.
   * *Custom* – Paste or upload your own word list. One word per line, no duplicates.
 
 * **Garbled words**  
