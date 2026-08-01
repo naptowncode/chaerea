@@ -34,8 +34,8 @@ Default settings are meant to balance security with memorability.
 
 * **Word lists**  
   Default is "Short list". Lists are based on the [12dicts](https://wordlist.aspell.net/12dicts-readme/) project that makes lists of common English words by comparing multiple dictionaries. All lists have been filtered to remove a variety of words that could be problematic for one reason or another. 
-  * *Short list* - 11,912 core English words, from three to eight letters long, based 12dicts "3esl" list.
-  * *Long list* - 16,194 English words, from three to eight letters long, based 12dicts "6of12" list.
+  * *Short list* - 11,907 core English words, from three to eight letters long, based 12dicts "3esl" list.
+  * *Long list* - 16,188 English words, from three to eight letters long, based 12dicts "6of12" list.
   * *3‑letter list* - 446 English words, all exactly three letters long, taken from the Short list.
   * *Custom* – Paste or upload your own word list. One word per line, no duplicates.
 
@@ -59,8 +59,8 @@ Default settings are meant to balance security with memorability.
 
 * `index.html` – user interface and documentation  
 * `app.js` – application logic  
-* `words-shortlist.js`, `words-longlist.js`, `words-3letter.js` – built‑in word
-  lists  
+* `words-shortlist.js`, `words-longlist.js`, `words-3letter.js` – built‑in word lists
+* `naughty-list.txt` – every word that was excluded from the lists for one reason or another
 * `style.css` – basic styling
 
 ---

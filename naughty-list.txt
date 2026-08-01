@@ -4,6 +4,7 @@ abbey
 abbot
 ablution
 ablutions
+abortion
 abscess
 absolution
 acidosis
@@ -328,6 +329,11 @@ lecherous
 lecherously
 lecherousness
 lechery
+leper
+leprosy
+leprous
+lesion
+lesbian
 lethal
 lewd
 lewdly
